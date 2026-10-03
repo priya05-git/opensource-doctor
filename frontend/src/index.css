@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-bg text-ink font-mono min-h-screen;
+  background-image:
+    linear-gradient(rgba(94, 240, 142, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(94, 240, 142, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+body::before {
+  content: ''; position: fixed; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse at 50% 0%, rgba(94, 240, 142, 0.1), transparent 60%);
+}
+
+@layer components {
+  .card { @apply bg-panel border border-line rounded-2xl p-6 mb-4 animate-up; }
+  .btn { @apply bg-neon text-[#06210f] rounded-xl px-6 py-3.5 font-head font-bold cursor-pointer whitespace-nowrap hover:brightness-110 disabled:opacity-50 disabled:cursor-wait; }
+  .ghost { @apply border border-neon/50 text-neon rounded-full px-4 py-2 font-head font-bold text-sm hover:bg-neon/10; }
+  .chip { @apply bg-chip rounded-full px-4 py-2 text-sm hover:text-neon; }
+  .code { @apply bg-chip text-neon text-xs px-2 py-0.5 rounded mr-1 inline-block; }
+  .h-label { @apply text-neon text-xs font-semibold tracking-[0.2em] mb-3; }
+  .lvl { @apply inline-block text-[11px] font-semibold tracking-wider px-2.5 py-0.5 rounded-full mb-2; }
+  .spinner::after { content: ''; display: inline-block; width: 14px; height: 14px; margin-left: 10px; border: 2px solid #5ef08e; border-top-color: transparent; border-radius: 50%; animation: spin .8s linear infinite; vertical-align: middle; }
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes up { from { opacity: 0; transform: translateY(10px); } }
+.animate-up { animation: up .4s ease both; }
